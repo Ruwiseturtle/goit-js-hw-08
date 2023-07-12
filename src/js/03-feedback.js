@@ -8,7 +8,6 @@ const LOCALSTORAGE_KEY = 'feedback - form - state';
 readWebStorageData();
 const data = { email: '', message: '' };
 
-
 //якщо в сховищі є дані, то считуємо їх і заповнюємо ними поля для ввода
 function readWebStorageData() {
   const savedData = localStorage.getItem(LOCALSTORAGE_KEY);
@@ -26,20 +25,20 @@ function readWebStorageData() {
 form.addEventListener('input', throttle(updateData, 500));
 
 function updateData(e) {
-  
-  const { email, message } = e.currentTarget.elements;
+  const { email, message } = form.elements;
   data.email = email.value;
   data.message = message.value;
 
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(data));
-  
 }
 
 //при натисканні на кнопку, очищаємо сховище и текстові поля
 form.addEventListener('submit', e => {
-  
-  if (e.currentTarget.elements.email.value === '') {
-    alert('Заповніть обовязкове поле email!');
+  if (
+    e.currentTarget.elements.email.value === '' ||
+    e.currentTarget.elements.message.value === ''
+  ) {
+    alert('Заповніть обовязков усі поля!');
   } else {
     localStorage.clear();
     inputEmail.textContent = '';

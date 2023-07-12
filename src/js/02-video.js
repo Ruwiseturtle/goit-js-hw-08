@@ -16,8 +16,13 @@ player.on('timeupdate', throttle(e => {
 
 //якщо у сховищі є такий ключ, то плеєру встановлюємо поточний час
 function updateVideoTime() {
-  if (localStorage.getItem(LOCALSTORAGE_KEY) != null) {
-    let time = localStorage.getItem(LOCALSTORAGE_KEY);
+  if (localStorage.getItem(LOCALSTORAGE_KEY) !== null) {
+    //перший спосіб
+    // let time = localStorage.getItem(LOCALSTORAGE_KEY);
+    // player.setCurrentTime(time);
+
+    //другий спосіб
+    let time = localStorage.getItem(LOCALSTORAGE_KEY) || "";
     player.setCurrentTime(time);
   }
 
