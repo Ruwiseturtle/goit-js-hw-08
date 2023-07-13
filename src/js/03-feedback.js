@@ -34,13 +34,16 @@ function updateData(e) {
 
 //при натисканні на кнопку, очищаємо сховище и текстові поля
 form.addEventListener('submit', e => {
+  e.preventDefault();
+
   if (
     e.currentTarget.elements.email.value === '' ||
     e.currentTarget.elements.message.value === ''
   ) {
     alert('Заповніть обовязков усі поля!');
   } else {
-    localStorage.clear();
+    console.log(data);
+    localStorage.removeItem(LOCALSTORAGE_KEY);
     inputEmail.textContent = '';
     inputMessage.textContent = '';
   }
