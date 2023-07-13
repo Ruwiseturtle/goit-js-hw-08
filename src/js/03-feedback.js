@@ -32,7 +32,7 @@ function updateData(e) {
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(data));
 }
 
-//при натисканні на кнопку, очищаємо сховище и текстові поля
+//при натисканні на кнопку, очищаємо сховище і текстові поля
 form.addEventListener('submit', e => {
   e.preventDefault();
 
@@ -41,7 +41,8 @@ form.addEventListener('submit', e => {
     e.currentTarget.elements.message.value === ''
   ) {
     alert('Заповніть обовязков усі поля!');
-  } else {
+  }
+  else {
     console.log(data);
     localStorage.removeItem(LOCALSTORAGE_KEY);
     inputEmail.textContent = '';
